@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "tool": "impact-trail",
+  "baseline": null,
+  "source_roots": [
+    "."
+  ],
+  "changed": [
+    "shop/pricing.py"
+  ],
+  "files_analyzed": 8,
+  "edges_analyzed": 10,
+  "impacts": [
+    {
+      "path": "shop/api.py",
+      "kind": "module",
+      "changed": false,
+      "origin": "shop/pricing.py",
+      "trail": [
+        {
+          "importer": "shop/cart.py",
+          "dependency": "shop/pricing.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        },
+        {
+          "importer": "shop/api.py",
+          "dependency": "shop/cart.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        }
+      ]
+    },
+    {
+      "path": "shop/cart.py",
+      "kind": "module",
+      "changed": false,
+      "origin": "shop/pricing.py",
+      "trail": [
+        {
+          "importer": "shop/cart.py",
+          "dependency": "shop/pricing.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        }
+      ]
+    },
+    {
+      "path": "shop/pricing.py",
+      "kind": "module",
+      "changed": true,
+      "origin": "shop/pricing.py",
+      "trail": []
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "test",
+      "changed": false,
+      "origin": "shop/pricing.py",
+      "trail": [
+        {
+          "importer": "shop/cart.py",
+          "dependency": "shop/pricing.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        },
+        {
+          "importer": "shop/api.py",
+          "dependency": "shop/cart.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        },
+        {
+          "importer": "tests/test_api.py",
+          "dependency": "shop/api.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_cart.py",
+      "kind": "test",
+      "changed": false,
+      "origin": "shop/pricing.py",
+      "trail": [
+        {
+          "importer": "shop/cart.py",
+          "dependency": "shop/pricing.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        },
+        {
+          "importer": "tests/test_cart.py",
+          "dependency": "shop/cart.py",
+          "line": 1,
+          "reason": "import",
+          "snapshot": "working"
+        }
+      ]
+    }
+  ],
+  "candidate_tests": [
+    "tests/test_api.py",
+    "tests/test_cart.py"
+  ],
+  "warnings": [],
+  "full_suite_recommended": false,
+  "limitations": [
+    "Static import reachability is not proof of runtime behavior or test coverage.",
+    "Dynamic imports, plugins, data files, runtime path changes and monkeypatching may be missed.",
+    "Conditional and type-only imports are included conservatively; false positives are expected.",
+    "Always run your normal required CI suite; this tool does not deselect tests."
+  ]
+}
