@@ -1,16 +1,18 @@
 # Impact Trail
 
-**Changed one file. What else should you inspect?**
+**Python change impact analysis for code review.**
 
-Impact Trail explains the possible reach of a Python change, with a shortest import trail to every reached file. Run it locally before a pull request, attach a Markdown report, or share a self-contained HTML report.
+Impact Trail is a local CLI for Python developers and code reviewers. Starting from Git changes or explicitly selected files, it follows a static import graph to find potentially affected modules and candidate test files, with one shortest import-evidence trail to each reached file.
 
-**No API key. No runtime dependencies. No project imports. No network calls.**
+Use it to inspect dependencies before a pull request, prioritize files for review, and share the reasoning in text, JSON, Markdown or offline HTML reports.
+
+**No API key. No runtime dependencies. Analysis runs locally without importing or executing the inspected Python project.**
 
 [中文说明](README.zh-CN.md) · [Example report](docs/example-report.html) · [How it works](docs/design.md) · [Contributing](CONTRIBUTING.md)
 
-> Alpha software. Import reachability is evidence for review, not proof of runtime impact, test coverage, or safety. Keep your required CI suite.
+> Alpha: file-level static analysis can miss runtime dependencies and include imports that do not affect behavior. Candidate test files are a review shortlist, not a safe test-selection result. Keep your required CI suite.
 
-## Try it in 30 seconds
+## Try the included example
 
 Python 3.10+; Git is needed only for Git comparisons. Clone the repository first:
 
